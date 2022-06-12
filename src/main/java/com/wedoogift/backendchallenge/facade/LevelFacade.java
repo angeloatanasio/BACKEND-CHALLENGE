@@ -1,6 +1,5 @@
 package com.wedoogift.backendchallenge.facade;
 
-import com.wedoogift.backendchallenge.domain.Company;
 import com.wedoogift.backendchallenge.domain.User;
 import com.wedoogift.backendchallenge.dto.LevelDTO;
 import com.wedoogift.backendchallenge.mapper.LevelMapper;

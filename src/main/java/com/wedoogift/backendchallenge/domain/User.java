@@ -1,6 +1,5 @@
 package com.wedoogift.backendchallenge.domain;
 
-import com.wedoogift.backendchallenge.shared.LevelEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

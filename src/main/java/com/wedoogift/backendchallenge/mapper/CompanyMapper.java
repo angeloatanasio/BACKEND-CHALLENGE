@@ -7,7 +7,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface CompanyMapper extends EntityMapper<CompanyDTO, Company> {
@@ -19,7 +18,4 @@ public interface CompanyMapper extends EntityMapper<CompanyDTO, Company> {
             @Mapping(source = "balance", target = "balance")
     })
     CompanyDTO toDto(Company company);
-
-    @Override
-    List<CompanyDTO> toDto(List<Company> companies);
 }

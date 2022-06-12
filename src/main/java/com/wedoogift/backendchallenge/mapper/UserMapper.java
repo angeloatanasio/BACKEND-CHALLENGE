@@ -32,6 +32,6 @@ public abstract class UserMapper{
                         .stream()
                         .filter(userWallet -> userWallet.getWallet() != null && userWallet.getWallet().getId() == walletId)
                         .map(userWallet -> new UserLevel1DTO(userDTO.getId(), userWallet.getBalance()))
-                        .findFirst().orElseThrow(() -> new IllegalArgumentException("Il n'exsite pas d'user wallet avec cet id"));
+                        .findFirst().orElseThrow(() -> new IllegalArgumentException("Il n'existe pas d'user wallet avec cet id"));
             }
 }
