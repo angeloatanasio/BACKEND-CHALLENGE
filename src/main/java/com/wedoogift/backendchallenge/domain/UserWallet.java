@@ -1,5 +1,6 @@
 package com.wedoogift.backendchallenge.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "user_wallet")
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserWallet {
 
     @Id
@@ -27,28 +29,16 @@ public class UserWallet {
     @Column(name = "balance")
     private int balance;
 
-    public UserWallet(long id, int distributionAmount) {
-        this.id = id;
-        this.balance = distributionAmount;
-    }
-
-    public UserWallet(long id, int distributionAmount, Wallet wallet, User user) {
-        this.id=id;
-        this.balance=distributionAmount;
-        this.wallet=wallet;
-        this.user=user;
-    }
-
-    public UserWallet saveCalculateBalanceUserWalletByLevel(int distributionAmount, Wallet wallet, User user) {
+    public UserWallet saveCalculateBalanceUserWalletByLevel( User user, Wallet wallet,int distributionAmount) {
            return new UserWallet(this.id,
-                   this.balance = distributionAmount,
+                   this.user = user,
                    this.wallet = wallet,
-                   this.user = user);
+                   this.balance = distributionAmount);
     }
-    public UserWallet updateCalculateBalanceUserWalletByLevel(int distributionAmount, Wallet wallet, User user) {
+    public UserWallet updateCalculateBalanceUserWalletByLevel(User user, Wallet wallet,int distributionAmount ) {
         return new UserWallet(this.id,
-                this.balance += distributionAmount,
+                this.user = user,
                 this.wallet = wallet,
-                this.user = user);
+                this.balance += distributionAmount);
     }
 }

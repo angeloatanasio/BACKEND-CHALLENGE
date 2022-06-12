@@ -1,5 +1,6 @@
 package com.wedoogift.backendchallenge.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "distribution")
 @NoArgsConstructor
 @Getter
+@AllArgsConstructor
 public class Distribution {
 
     @Id
@@ -41,16 +43,6 @@ public class Distribution {
         this.wallet = wallet;
     }
 
-    public Distribution(long id, int distributionAmount, String dateOfDistribution, String lifeSpanDistribution, Wallet wallet, User user, Company company) {
-        this.id = id;
-        this.amount = distributionAmount;
-        this.startDate = dateOfDistribution;
-        this.endDate = lifeSpanDistribution;
-        this.wallet = wallet;
-        this.user = user;
-        this.company = company;
-    }
-
     public Distribution(long id, int distributionAmount) {
         this.id =id;
         this.amount=distributionAmount;
@@ -59,45 +51,45 @@ public class Distribution {
     public Distribution saveCalculateDistribution(int distributionAmount,
                                                   String dateOfDistribution,
                                                   String lifeSpanDistribution,
-                                                  Wallet wallet,
+                                                  Company company,
                                                   User user,
-                                                  Company company) {
+                                                  Wallet wallet) {
         return new Distribution(this.id,
                 distributionAmount,
                 dateOfDistribution,
                 lifeSpanDistribution,
-                wallet,
+                company,
                 user,
-                company);
+                wallet);
     }
 
     public Distribution updateCalculateDistribution(int distributionAmount,
                                                     String dateOfDistribution,
                                                     String lifeSpanDistribution,
-                                                    Wallet wallet,
+                                                    Company company,
                                                     User user,
-                                                    Company company) {
+                                                    Wallet wallet) {
         return new Distribution(this.id,
                 this.amount += distributionAmount,
                 dateOfDistribution,
                 lifeSpanDistribution,
-                wallet,
+                company,
                 user,
-                company);
+                wallet);
     }
 
     public Distribution calculateDistributionWhenitExpire(int distributionRegistered,
                                                           String dateOfDistribution,
                                                           String lifeSpanDistribution,
-                                                          Wallet wallet,
+                                                          Company company,
                                                           User user,
-                                                          Company company) {
-        return new Distribution(this.id=id,
+                                                          Wallet wallet){
+        return new Distribution(this.id,
                 this.amount-=distributionRegistered,
                 dateOfDistribution,
                 lifeSpanDistribution,
-                wallet,
+                company,
                 user,
-                company);
+                wallet);
     }
 }

@@ -1,5 +1,6 @@
 package com.wedoogift.backendchallenge.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Table(name = "user")
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
 
@@ -29,8 +31,4 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserWallet> userWallets = new ArrayList<>();
 
-    public User(long id, List<UserWallet> userWallets) {
-        this.id=id;
-        this.userWallets=userWallets;
-    }
 }

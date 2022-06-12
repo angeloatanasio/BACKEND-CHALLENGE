@@ -1,5 +1,6 @@
 package com.wedoogift.backendchallenge.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Table(name = "company")
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Company {
 
     @Id

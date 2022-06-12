@@ -83,16 +83,16 @@ public class DistributionService {
                         || dateOfDistribution.isEqual(LocalDate.parse(lifeSpanDistribution))) {
 
                     Distribution distributionToSave = distribution.getId() == 0
-                            ? distribution.saveCalculateDistribution(distributionAmount, String.valueOf(dateOfDistribution), lifeSpanDistribution, wallet, user, company)
+                            ? distribution.saveCalculateDistribution(distributionAmount, String.valueOf(dateOfDistribution), lifeSpanDistribution, company, user, wallet)
                             : distribution.updateCalculateDistribution(distributionAmount, distribution.getStartDate(),
-                            distribution.getEndDate(), userWallet.getWallet(), user, company);
+                            distribution.getEndDate(), company, user, userWallet.getWallet()  );
                     distributionRepository.save(distributionToSave);
 
                     companyRepository.save(company.calculateBalanceCompanyByLevel(distributionAmount, company.getName()));
 
                     UserWallet userWalletToSave = userWallet.getId() == 0
-                            ? userWallet.saveCalculateBalanceUserWalletByLevel(distributionAmount, wallet, user)
-                            : userWallet.updateCalculateBalanceUserWalletByLevel(distributionAmount, userWallet.getWallet(), user);
+                            ? userWallet.saveCalculateBalanceUserWalletByLevel(user, wallet, distributionAmount  )
+                            : userWallet.updateCalculateBalanceUserWalletByLevel(user, userWallet.getWallet(), distributionAmount);
                     userWalletRepository.save(userWalletToSave);
 
                 }
@@ -119,9 +119,9 @@ public class DistributionService {
                                         distributionRepository.save(distribution.calculateDistributionWhenitExpire(distribution.getAmount(),
                                                 distribution.getStartDate(),
                                                 distribution.getEndDate(),
-                                                wallet,
+                                                company,
                                                 user,
-                                                company));
+                                                wallet));
                                     }
                                 });
                     }
