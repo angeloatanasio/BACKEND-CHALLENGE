@@ -39,7 +39,6 @@ public class DistributionService {
         Optional<UserWallet> userWalletExist = user.getUserWallets()
                 .stream()
                 .filter(u -> u.getUser().getId() == user.getId()
-                            && wallet != null
                             && u.getWallet().getId() == wallet.getId())
                 .findFirst();
 
@@ -49,7 +48,6 @@ public class DistributionService {
                 .stream()
                 .filter(d -> d.getUser().getId() == user.getId()
                         && d.getWallet() != null
-                        && wallet != null
                         && d.getWallet().getId() == wallet.getId())
                 .findFirst();
 

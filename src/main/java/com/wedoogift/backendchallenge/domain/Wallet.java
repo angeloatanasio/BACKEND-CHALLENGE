@@ -1,5 +1,6 @@
 package com.wedoogift.backendchallenge.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "wallet")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Wallet {
 
